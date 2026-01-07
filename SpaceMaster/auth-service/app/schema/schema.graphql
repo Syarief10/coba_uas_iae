@@ -1,0 +1,32 @@
+type Query {
+  health: String!
+}
+
+type Mutation {
+  register(
+    username: String!
+    password: String!
+    role: String!
+  ): RegisterResult!
+
+  login(
+    username: String!
+    password: String!
+  ): LoginResult!
+}
+
+# =========================
+# RESULT TYPES
+# =========================
+
+type RegisterResult {
+  success: Boolean!
+  message: String!
+}
+
+type LoginResult {
+  success: Boolean!
+  message: String!
+  access_token: String
+  role: String
+}

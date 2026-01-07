@@ -1,0 +1,56 @@
+type Room {
+  id: ID!
+}
+
+type Venue {
+  id: ID!
+  name: String!
+  city: String!
+  address: String!
+  description: String
+  rooms: [Room!]!
+  events: [Event!]!
+}
+
+input VenueInput {
+  name: String!
+  city: String!
+  address: String!
+  description: String
+}
+
+type VenueResult {
+  success: Boolean!
+  message: String!
+  venue: Venue
+}
+
+type DeleteResult {
+  success: Boolean!
+  message: String!
+}
+
+type Query {
+  venues: [Venue!]!
+  venue(id: ID!): Venue
+}
+
+type Event {
+  id: ID!
+  title: String!
+  startTime: String!
+  endTime: String!
+  status: String!
+  roomId: Int!
+}
+
+extend type Query {
+  venueEvents(venueId: Int!): [Event!]!
+}
+
+
+type Mutation {
+  createVenue(data: VenueInput!): VenueResult!
+  updateVenue(id: ID!, data: VenueInput!): VenueResult!
+  deleteVenue(id: ID!): DeleteResult!
+}

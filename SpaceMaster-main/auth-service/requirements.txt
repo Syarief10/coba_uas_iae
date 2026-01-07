@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+python-jose
+bcrypt==3.2.2
+ariadne==0.23.0
